@@ -208,22 +208,41 @@ export const RagEngineView: React.FC<RagEngineViewProps> = ({ language }) => {
               className="p-4 bg-slate-900 border border-slate-800/80 rounded-xl space-y-3 flex flex-col justify-between"
             >
               <div>
-                <div className="flex items-center justify-between mb-2">
-                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-950 text-sky-400 border border-slate-800 uppercase">
-                    {doc.category}
-                  </span>
-                  <span className="text-[10px] font-mono text-slate-500">
-                    {doc.chunks.length} чанків
-                  </span>
+                <div className="flex items-center justify-between mb-2 flex-wrap gap-1">
+                  <div className="flex items-center gap-1.5">
+                    <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-950 text-sky-400 border border-slate-800 uppercase">
+                      {doc.category}
+                    </span>
+                    {doc.metadata?.sourcePlatform && (
+                      <span className="text-[10px] font-mono px-1.5 py-0.2 rounded bg-[#A83249]/20 text-[#E05B70] border border-[#A83249]/30">
+                        {doc.metadata.sourcePlatform}
+                      </span>
+                    )}
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    {doc.critiqueScore && (
+                      <span className="text-[10px] font-mono px-1.5 py-0.2 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+                        Critique: {doc.critiqueScore}/100
+                      </span>
+                    )}
+                    <span className="text-[10px] font-mono text-slate-500">
+                      {doc.chunks.length} чанків
+                    </span>
+                  </div>
                 </div>
                 <h4 className="text-xs font-bold text-white mb-1">{doc.title}</h4>
+                {doc.metadata?.sourceHandle && (
+                  <div className="text-[10px] font-mono text-slate-400 mb-1.5">
+                    Джерело: <span className="text-sky-300">{doc.metadata.sourceHandle}</span>
+                  </div>
+                )}
                 <p className="text-[11px] text-slate-400 line-clamp-3 leading-relaxed">
                   {doc.content}
                 </p>
               </div>
 
               <div className="pt-2 border-t border-slate-800 flex items-center justify-between text-[10px] font-mono text-slate-500">
-                <span>Ключ: {doc.id}</span>
+                <span className="truncate max-w-[150px]">Ключ: {doc.id}</span>
                 <span className="text-emerald-400">● Векторизовано</span>
               </div>
             </div>
