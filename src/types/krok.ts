@@ -103,6 +103,20 @@ export interface CredibilityCheckResult {
   recommendation: string;
 }
 
+export interface RagDocMetadata {
+  sourcePlatform?: 'Instagram' | 'Telegram' | 'Threads' | 'Web' | 'File' | 'Manual';
+  sourceHandle?: string;
+  qualityScore?: number;
+  tags?: string[];
+  entities?: {
+    products?: string[];
+    prices?: string[];
+    contacts?: string[];
+  };
+  critiquePassed?: boolean;
+  critiqueSummary?: string;
+}
+
 export interface RagDoc {
   id: string;
   title: string;
@@ -110,6 +124,8 @@ export interface RagDoc {
   content: string;
   chunks: string[];
   createdAt: string;
+  metadata?: RagDocMetadata;
+  critiqueScore?: number;
 }
 
 export interface FaqItem {
