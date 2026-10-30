@@ -1,0 +1,6 @@
+{
+  "name": "KROK Assistant v10.0 Swarm Engine",
+  "description": "Autonomous multi-agent swarm platform with 7 specialized agent lines, DAG orchestrator, RAG knowledge base, and self-critique loop.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
